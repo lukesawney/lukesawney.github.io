@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to My GitHub Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #6EE7B7, #3B82F6);
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.3em;
+    }
+    p {
+      font-size: 1.2em;
+      margin-bottom: 1.5em;
+    }
+    a {
+      text-decoration: none;
+      background: #fff;
+      color: #3B82F6;
+      padding: 0.8em 1.5em;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    a:hover {
+      background: #3B82F6;
+      color: #fff;
+    }
+    footer {
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+      font-size: 0.9em;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hello World! 🎉</h1>
+  <p>Welcome to my website hosted on <strong>GitHub Pages</strong>.</p>
+  <a href="https://github.com/lukesawney" target="_blank">
+    Visit my GitHub
+  </a>
+  <footer>
+    © <span id="year"></span> Luke Sawney
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
