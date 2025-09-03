@@ -43,18 +43,28 @@
       width: 100%;
       font-size: 0.9em;
       opacity: 0.8;
+    } 
+    .links {
+      display: inline-flex;
+      gap: 12px;          
+      flex-wrap: wrap;   
+      justify-content: center;
     }
   </style>
 </head>
 <body>
   <h1>Luke Sawney's Data Portfolio</h1>
   <p>Welcome to my portfolio for all things <strong>data engineering</strong>, <strong>data science</strong> and <strong>analytics engineering</strong>.</p>
-  <a href="https://github.com/lukesawney" target="_blank">
+  <div class="links" role="group" aria-label="Primary links">
+    <a href="https://github.com/lukesawney"
+     target="_blank" rel="noopener noreferrer">
     Visit my GitHub
-  </a>
-    <a href="https://www.linkedin.com/in/luke-sawney/" target="_blank">
-    Visit my LinkedIn
-  </a>
+    </a>
+    <a href="https://www.linkedin.com/in/lukesawney"
+     target="_blank" rel="noopener noreferrer">
+    Connect on LinkedIn
+    </a>
+  </div>
   <footer>
     © <span id="year"></span> Luke Sawney
   </footer>
