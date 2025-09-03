@@ -2,74 +2,201 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to My GitHub Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Personal site built on GitHub Pages." />
   <style>
+    /* ---------- Base & layout ---------- */
+    :root {
+      --brand: #3B82F6;          /* accent */
+      --text: #0f172a;           /* slate-900 */
+      --muted: #475569;          /* slate-600 */
+      --card: #ffffff;
+      --bg: #f8fafc;             /* slate-50 */
+    }
+    html { scroll-behavior: smooth; }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+    .container {
+      width: min(1000px, 92%);
+      margin: 0 auto;
+    }
+
+    /* ---------- Sticky top nav ---------- */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 0;
+    }
+    .brand { font-weight: 700; letter-spacing: .2px; }
+    nav a {
+      text-decoration: none; color: var(--text);
+      padding: 8px 10px; border-radius: 8px; font-weight: 600;
+    }
+    nav a:hover { background: #eef2ff; color: var(--brand); }
+    nav { display: flex; gap: 6px; }
+
+    /* ---------- Hero ---------- */
+    .hero {
       background: linear-gradient(135deg, #6EE7B7, #3B82F6);
       color: #fff;
       text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      padding: 90px 0 70px;
     }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 0.3em;
+    .hero h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 .25em; }
+    .hero p  { font-size: 1.1rem; opacity: .95; margin: 0 0 1.5rem; }
+    .links { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      text-decoration: none; background: #fff; color: var(--brand);
+      padding: 0.8em 1.2em; border-radius: 10px; font-weight: 700;
+      transition: transform .04s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+      box-shadow: 0 6px 18px rgba(0,0,0,.08);
     }
-    p {
-      font-size: 1.2em;
-      margin-bottom: 1.5em;
+    .btn:hover { background: var(--brand); color: #fff; }
+    .btn:active { transform: translateY(1px); }
+
+    /* ---------- Sections ---------- */
+    section { padding: 70px 0; }
+    /* prevent the sticky header from covering anchored sections */
+    section { scroll-margin-top: 80px; }
+    h2 { margin: 0 0 10px; font-size: clamp(1.6rem, 3vw, 2rem); }
+    .muted { color: var(--muted); margin: 0 0 24px; }
+
+    /* About */
+    .about .card {
+      background: var(--card); border: 1px solid #e2e8f0; border-radius: 16px;
+      padding: 24px; box-shadow: 0 10px 30px rgba(2,6,23,.06);
     }
-    a {
-      text-decoration: none;
-      background: #fff;
-      color: #3B82F6;
-      padding: 0.8em 1.5em;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background 0.3s ease, color 0.3s ease;
+
+    /* Projects grid */
+    .grid {
+      display: grid; gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     }
-    a:hover {
-      background: #3B82F6;
-      color: #fff;
+    .project {
+      background: var(--card); border: 1px solid #e2e8f0; border-radius: 16px;
+      padding: 18px; display: flex; flex-direction: column; gap: 10px;
+      box-shadow: 0 10px 30px rgba(2,6,23,.06);
     }
+    .project h3 { margin: 0; font-size: 1.1rem; }
+    .project p { margin: 0; color: var(--muted); }
+    .project a { align-self: start; margin-top: 6px; }
+
+    /* Contact */
+    .contact .card {
+      background: var(--card); border: 1px solid #e2e8f0; border-radius: 16px;
+      padding: 24px; display: grid; gap: 10px; justify-items: start;
+      box-shadow: 0 10px 30px rgba(2,6,23,.06);
+    }
+
+    /* Footer */
     footer {
-      position: absolute;
-      bottom: 15px;
-      width: 100%;
-      font-size: 0.9em;
-      opacity: 0.8;
-    } 
-    .links {
-      display: inline-flex;
-      gap: 12px;          
-      flex-wrap: wrap;   
-      justify-content: center;
+      margin-top: auto; text-align: center; padding: 18px 0; color: var(--muted);
     }
+
+    /* Accessibility niceties */
+    a:focus { outline: 3px solid #94a3b8; outline-offset: 2px; border-radius: 10px; }
   </style>
 </head>
 <body>
-  <h1>Luke Sawney's Data Portfolio</h1>
-  <p>Welcome to my portfolio for all things <strong>data engineering</strong>, <strong>data science</strong> and <strong>analytics engineering</strong>.</p>
-  <div class="links" role="group" aria-label="Primary links">
-    <a href="https://github.com/lukesawney"
-     target="_blank" rel="noopener noreferrer">
-    Visit my GitHub
-    </a>
-    <a href="https://www.linkedin.com/in/lukesawney"
-     target="_blank" rel="noopener noreferrer">
-    Connect on LinkedIn
-    </a>
-  </div>
+  <!-- Top navigation with in-page links -->
+  <header>
+    <div class="container nav">
+      <div class="brand">Luke Sawney</div>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero / intro -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h1>Luke Sawney's Data Portfolio</h1>
+      <p>Welcome to my portfolio on all things <strong>data engineering</strong>, <strong>analytics engineering</strong> and <strong>data science</strong>.</p>
+      <div class="links" role="group" aria-label="Profile links">
+        <a class="btn" href="https://github.com/lukesawney" target="_blank" rel="noopener noreferrer">Visit my GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/lukesawney" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2>About</h2>
+      <p class="muted">A quick intro about who you are and what you do.</p>
+      <div class="card">
+        <p>
+          I’m a <strong>your role</strong> who enjoys building <em>things on the web</em>. 
+          I like working with HTML/CSS/JS and shipping clean, accessible UIs.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <p class="muted">A few things I’ve worked on recently.</p>
+
+      <div class="grid">
+        <article class="project">
+          <h3>Project One</h3>
+          <p>Short description of what it is and why it’s cool.</p>
+          <a class="btn" href="https://github.com/YOUR-GITHUB-USERNAME/PROJECT-ONE" target="_blank" rel="noopener noreferrer">View</a>
+        </article>
+
+        <article class="project">
+          <h3>Project Two</h3>
+          <p>Short description; link could go to a demo or repo.</p>
+          <a class="btn" href="https://example.com/demo" target="_blank" rel="noopener noreferrer">Live Demo</a>
+        </article>
+
+        <article class="project">
+          <h3>Project Three</h3>
+          <p>Another project with a brief blurb.</p>
+          <a class="btn" href="#" target="_blank" rel="noopener noreferrer">Read More</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p class="muted">Want to say hi? Pick your favorite channel.</p>
+      <div class="card">
+        <a class="btn" href="mailto:lukesawney@hotmail.com">Email Me</a>
+        <a class="btn" href="https://www.linkedin.com/in/lukesawney" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="btn" href="https://github.com/lukesawney" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </section>
+
   <footer>
     © <span id="year"></span> Luke Sawney
   </footer>
 
   <script>
+    // auto-update year
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
